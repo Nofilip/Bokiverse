@@ -9,7 +9,7 @@ Tech Stack:
 
 
 This is how you are getting started :  
-- git clone https://github.com/YOUR_USERNAME/Bokiverse.git  
+- git clone https://github.com/Nofilip/Bokiverse.git  
 - cd Bokiverse  
 - npm install  
 - npm run dev  
