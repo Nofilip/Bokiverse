@@ -9,6 +9,11 @@ function App() {
       <Header />
 
       <NavBar />
+
+      <section>
+        <div className='p-4'><img src="https://placehold.co/400x300" alt="" /></div>
+        <span></span>
+      </section>
     </>
   );
 }
