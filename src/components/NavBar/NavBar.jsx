@@ -1,31 +1,33 @@
-const NavBar = () => {
-      return (
-        <nav className='grid grid-cols-4 gap-4 md:flex md:gap-8 bg-slate-600 text-white font-bold p-4 w-auto'>
+import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 
-        <div className='hover:underline'>
-          <a href="http://">Nyheter</a>
-        </div>
-        <div className='hover:underline'>
-          <a href="http://">Böcker</a>
-        </div>
-        <div className='hover:underline'>
-          <a href="http://">Pussel</a>
-        </div>
-        <div className='hover:underline'>
-          <a href="http://">Ljudböcker</a>
-        </div>
-        <div className='hover:underline'>
-          <a href="http://">Spel</a>
-        </div>
-        <div className='hover:underline'>
-          <a href="http://">Rea</a>
-        </div>
-        <div className='hover:underline'>
-          <a href="http://">Student</a>
-        </div>
-        <div className='hover:underline'>
-          <a href="http://">Bästsäljare</a>
-        </div>
+
+const NavBar = () => {
+    const [menuOpen, setMenuOpen] = useState(false);
+      return (
+        <nav className='grid justify-start sm:grid-cols-4 sm:gap-4 md:flex md:gap-8 bg-slate-600 text-white font-bold p-4 w-auto relative'>
+
+        <button
+        onClick={ () => setMenuOpen (!menuOpen)}
+        className="sm:hidden" 
+        >
+        <FontAwesomeIcon icon={menuOpen ? faTimes : faBars} className="text-2xl"/>
+        </button>
+
+        <ul className={`absolute sm:static top-12 sm:w-auto bg-slate-700 sm:bg-transparent sm:flex flex-col sm:flex-row items-center
+        ${
+          menuOpen ? "block" : "hidden"
+        }`}>
+          
+          <li className='hover:underline p-2'><a href="http://">Nyheter</a></li>
+          <li className='hover:underline p-2'><a href="http://">Böcker</a></li>
+          <li className='hover:underline p-2'><a href="http://">Pussel</a></li>
+          <li className='hover:underline p-2'><a href="http://">Ljudböcker</a></li>
+          <li className='hover:underline p-2'><a href="http://">Rea</a></li>
+
+        </ul>
+
       </nav>
       )
 
