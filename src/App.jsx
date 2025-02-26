@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import './App.css'
 import Header from './components/header/header';
 import NavBar from './components/NavBar/NavBar';
@@ -7,13 +8,19 @@ import ProductGrid from './components/Products/ProductGrid';
 
 function App() {
 
-  const Products = [];
+  const [products, setProducts] = useState([]);
 
-  fetch("http://localhost:8000/api/tasks")
-    .then(resp => resp.json())
-    .then(Products => {
-      console.log(Products);
-    })
+  useEffect(() => {
+    fetch("http://localhost:8000/api/tasks")
+      .then(resp => resp.json())
+      .then(data => {
+        setProducts(data);
+      })
+      
+  }, []);
+  
+
+
   
   return (
     <>
@@ -21,7 +28,7 @@ function App() {
 
       <NavBar />
 
-      <ProductGrid Products={Products} />
+      <ProductGrid products={products} />
     </>
   );
 }
