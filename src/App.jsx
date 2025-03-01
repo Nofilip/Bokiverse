@@ -8,6 +8,7 @@ import Header from './components/Header/Header';
 
 import NavBar from './components/NavBar/NavBar';
 import ProductGrid from './components/Products/ProductGrid';
+import HiddenSection from './components/HiddenSection/HiddenSection';
 
 
 
@@ -36,10 +37,13 @@ function App() {
    
       <NavBar />
 
+      <Hero />
+
+      <HiddenSection />
 
       <ProductGrid products={products} />
 
-      <Hero />
+      
 
     </>
   );
