@@ -6,7 +6,7 @@ const Header = () => {
       <header className="grid gap-2 grid-cols-1 sm:flex items-center sm:items-center sm:justify-between p-4 bg-gray-800 text-white">
 
       <div className="col-span-2 sm:col-span-3 flex sm:justify-start w-auto">
-        <a href="" className="w-full">
+        <a href="http://localhost:3000/" className="w-full">
         <img src="https://placehold.co/200x100" alt="Bokiverse Logo" className='w-full sm:max-w-xs' />
         </a>
       </div>

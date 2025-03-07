@@ -16,9 +16,8 @@ const NavBar = () => {
         </button>
 
         <ul className={`absolute sm:static top-12 sm:w-auto bg-slate-700 sm:bg-transparent sm:flex flex-col sm:flex-row items-center
-        ${
-          menuOpen ? "block" : "hidden"
-        }`}>
+
+        ${ menuOpen ? "block" : "hidden"} z-50 shadow-lg w-full left-0`}>
           
           <li className='hover:underline p-2'><a href="http://">Nyheter</a></li>
           <li className='hover:underline p-2'><a href="http://">Böcker</a></li>
