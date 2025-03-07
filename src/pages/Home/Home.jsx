@@ -11,7 +11,7 @@ function Home() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8000/api/tasks")
+    fetch("http://localhost:8000/api/products")
       .then(resp => resp.json())
       .then(data => {
         setProducts(data);
