@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 function ProductGrid({ products }) {
   return (
-    <section className="grid justify-center sm:grid-cols-2 lg:grid-cols-4 gap-4 m-4">
+    <section className="grid justify-center sm:grid-cols-2 lg:grid-cols-4 gap-4 m-4 bg-slate-50 p-2">
       
       {products.map((product) => (
         console.log(product.slug),
