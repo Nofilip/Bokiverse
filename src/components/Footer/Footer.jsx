@@ -36,7 +36,7 @@ import { useState } from "react";
       </section>
 
         <section>
-        <div className="w-full mx-auto mt-4">
+        <div className="w-full mx-auto mt-4 sm:hidden">
         {["Om oss", "Kontakt", "Mina sidor",].map((title, index) => (
           <div key={index} className="border-b border-gray-200">
             <button 
@@ -81,7 +81,27 @@ import { useState } from "react";
             </div>
           </div>
         ))}
-      </div>
+          </div>
+              <div className="hidden sm:grid grid-cols-3 bg-gray-300 p-4 rounded-lg">
+                <div className="grid">
+                    <h1 className="font-bold mb-2">Om oss</h1>
+                    <span>Vår historia</span>
+                    <span>Vår vision</span>
+                    <span>Teamet</span>
+                </div>
+                <div className="grid">
+                    <h1 className="font-bold mb-2">Kontakt</h1>
+                    <span>Kundtjänst</span>
+                    <span>Support</span>
+                    <span>Hitta oss</span>
+                </div>
+                <div className="grid">
+                    <h1 className="font-bold mb-2">Mina sidor</h1>
+                    <span>Orderhistorik</span>
+                    <span>Inställningar</span>
+                    <span>Logga ut</span>
+                </div>
+              </div>
 
 
         </section>
