@@ -5,6 +5,7 @@ import Header from '../../components/Header/Header';
 import NavBar from '../../components/NavBar/NavBar';
 import ProductGrid from '../../components/Products/ProductGrid';
 import HiddenSection from '../../components/HiddenSection/HiddenSection';
+import Footer from '../../components/Footer/Footer';
 
 function Home() {
 
@@ -31,7 +32,7 @@ function Home() {
 
       <ProductGrid products={products} />
 
-      
+      <Footer />
 
     </>
   );
