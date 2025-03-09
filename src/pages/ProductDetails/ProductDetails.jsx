@@ -75,7 +75,7 @@ function ProductDetails() {
                   <Link to={`/product/${product.slug}`} onClick={() => window.scrollTo(0, 0)} key={product.id} className="border p-4 bg-slate-100 rounded-lg block hover:shadow-lg transition">       
                     <div className="relative">
                       <img className="w-full rounded-lg relative" src={product.image} alt={product.title} />
-                      <a href="http://"></a><FontAwesomeIcon icon={faHeart} className="text-2xl absolute bottom-2 right-2 cursor-pointer" />
+                      <FontAwesomeIcon icon={faHeart} className="text-2xl absolute bottom-2 right-2 cursor-pointer" />
                     </div>
                     <div className="p-4">
                       <h1 className="text-3x1 font-bold mt-2">{product.title}</h1>

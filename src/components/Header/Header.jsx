@@ -1,7 +1,19 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faBasketShopping } from "@fortawesome/free-solid-svg-icons";
 
+
 const Header = () => {
+  const [query, setQuery] = useState("");
+  const navigate = useNavigate();
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (query.trim() !== "") {
+      navigate(`/search?q=${query}`); // Omdirigerar till sökresultatsidan med query i URL
+    }
+  };
     return (
       <header className="grid gap-2 grid-cols-1 sm:flex items-center sm:items-center sm:justify-between p-4 bg-gray-800 text-white">
 
@@ -12,11 +24,15 @@ const Header = () => {
       </div>
 
         <div className="flex items-center justify-between sm:justify-start w-full sm:w-2/4">
-          <input
-            className="w-full p-2 rounded bg-gray-700 text-white"
-            type="search"
-            placeholder="Sök här"
-          />
+          <form onSubmit={handleSearch} className="w-full">
+            <input
+              className="w-full p-2 rounded bg-gray-700 text-white"
+              type="search"
+              placeholder="Sök här"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)} // Uppdatera sökterm
+            />
+          </form>
         </div>
 
         <div className="flex justify-center sm:justify-end space-x-4">
