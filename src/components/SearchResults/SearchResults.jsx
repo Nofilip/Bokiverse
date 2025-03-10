@@ -1,56 +1,84 @@
-import { useState, useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
+import Header from "../Header/Header";
+import NavBar from "../NavBar/NavBar";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart, } from "@fortawesome/free-regular-svg-icons";
+import Footer from "../Footer/Footer";
 
-const SearchResults = () => {
-  const [searchParams] = useSearchParams();
-  const query = searchParams.get("q") || ""; // Hämtar söktermen från URL
+const SearchResult = () => {
   const [results, setResults] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const location = useLocation();
+  const query = new URLSearchParams(location.search).get("q");
 
   useEffect(() => {
     if (!query) return;
 
-    const fetchResults = async () => {
-      setLoading(true);
-      setError(null);
+    setLoading(true);
+    setError(null);
 
-      try {
-        const response = await fetch(`http://localhost:8000/api/products?q=${query}`);
+    fetch(`http://localhost:8000/api/search?q=${query}`)
+      .then((response) => {
         if (!response.ok) {
-          throw new Error("Det gick inte att hämta produkterna.");
+          throw new Error("Inga produkter hittades.");
         }
-        const data = await response.json();
+        return response.json();
+      })
+      .then((data) => {
         setResults(data);
-      } catch (err) {
+      })
+      .catch((err) => {
         setError(err.message);
-      } finally {
+      })
+      .finally(() => {
         setLoading(false);
-      }
-    };
-
-    fetchResults();
-  }, [query]); // Körs varje gång query ändras
+      });
+  }, [query]);
 
   return (
-    <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">Sökresultat för: "{query}"</h1>
+    <>
+      <Header />
+      <NavBar />
+      <div className="container mx-auto p-4">
+      <h2 className="text-2xl font-semibold my-4 text-center">Sökresultat för {query}</h2>
 
-      {loading && <p>Laddar...</p>}
-      {error && <p className="text-red-500">{error}</p>}
-      {results.length === 0 && !loading && !error && <p>Inga produkter hittades.</p>}
+      {loading && <p className="text-center">Laddar...</p>}
+      {error && <p className="text-center text-red-500">{error}</p>}
 
-      <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {results.map((product) => (
-          <li key={product.id} className="border p-4 rounded bg-gray-100">
-            <h3 className="text-lg font-semibold">{product.title}</h3>
-            <p>{product.description}</p>
-            <p className="font-bold">{product.price} kr</p>
-          </li>
-        ))}
-      </ul>
+      {results.length > 0 ? (
+        <section>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {results.map(product => (
+              <Link 
+                to={`/product/${product.slug}`} 
+                onClick={() => window.scrollTo(0, 0)} 
+                key={product.id} 
+                className="border p-4 bg-slate-100 rounded-lg block hover:shadow-lg transition"
+              >       
+                <div className="relative">
+                  <img className="w-full rounded-lg" src={product.image} alt={product.title} />
+                  <FontAwesomeIcon icon={faHeart} className="text-2xl absolute bottom-2 right-2 cursor-pointer" />
+                </div>
+                <div className="p-4">
+                  <h1 className="text-xl font-bold mt-2">{product.title}</h1>
+                  <p className="text-gray-400 text-sm mt-2">{product.author}</p>
+                  <p className="text-sm mt-4 hidden">{product.description}</p>
+                  <p className="text-lg font-semibold mt-6">{product.price} SEK</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
+      ) : (
+        <p className="text-center">Inga resultat hittades.</p>
+      )}
     </div>
+     <Footer />
+    </>
   );
 };
 
-export default SearchResults;
+export default SearchResult;

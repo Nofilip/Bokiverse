@@ -5,13 +5,15 @@ import { faHeart, faBasketShopping } from "@fortawesome/free-solid-svg-icons";
 
 
 const Header = () => {
-  const [query, setQuery] = useState("");
+  
   const navigate = useNavigate();
+  const [searchTerm, setSearchTerm] = useState("");
 
   const handleSearch = (e) => {
     e.preventDefault();
-    if (query.trim() !== "") {
-      navigate(`/search?q=${query}`); // Omdirigerar till sökresultatsidan med query i URL
+    const trimmedSearch = searchTerm.trim();
+    if (trimmedSearch) {
+      navigate(`/search?q=${trimmedSearch}`);
     }
   };
     return (
@@ -29,15 +31,15 @@ const Header = () => {
               className="w-full p-2 rounded bg-gray-700 text-white"
               type="search"
               placeholder="Sök här"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)} // Uppdatera sökterm
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)} // Uppdatera sökterm
             />
           </form>
         </div>
 
         <div className="flex justify-center sm:justify-end space-x-4">
-          <div><a href="http://"></a><FontAwesomeIcon icon={faHeart} className="text-2xl" /></div>
-          <div><a href="http://"></a><FontAwesomeIcon icon={faBasketShopping} className="text-2xl" /></div>  
+          <div><a href="http://"></a><FontAwesomeIcon icon={faHeart} className="text-2xl hover:cursor-pointer" /></div>
+          <div><a href="http://"></a><FontAwesomeIcon icon={faBasketShopping} className="text-2xl hover:cursor-pointer" /></div>  
         </div>
   </header>
     );

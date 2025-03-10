@@ -5,6 +5,7 @@ import NavBar from "../../components/NavBar/NavBar";
 import { faHeart, } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
+import Footer from "../../components/Footer/Footer";
 
 
 function ProductDetails() {
@@ -12,6 +13,12 @@ function ProductDetails() {
   const [product, setProduct] = useState(null);
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [error, setError] = useState(null);
+
+  useEffect(() => {
+    if (product) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }, [product]);
 
   useEffect(() => {
     fetch(`http://localhost:8000/api/products/${slug}`)
@@ -72,7 +79,7 @@ function ProductDetails() {
               <h2 className="text-2xl font-semibold my-4 text-center">Liknande böcker</h2>
               <div className="grid grid-cols-3 gap-6">          
                 {relatedProducts.map(product => (
-                  <Link to={`/product/${product.slug}`} onClick={() => window.scrollTo(0, 0)} key={product.id} className="border p-4 bg-slate-100 rounded-lg block hover:shadow-lg transition">       
+                  <Link to={`/product/${product.slug}`} key={product.id} className="border p-4 bg-slate-100 rounded-lg block hover:shadow-lg transition">       
                     <div className="relative">
                       <img className="w-full rounded-lg relative" src={product.image} alt={product.title} />
                       <FontAwesomeIcon icon={faHeart} className="text-2xl absolute bottom-2 right-2 cursor-pointer" />
@@ -88,7 +95,8 @@ function ProductDetails() {
                     </Link>
                   ))}
                 </div>
-            </section>   
+            </section>
+            <Footer />   
     </div>
   );
 
