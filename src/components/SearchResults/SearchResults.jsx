@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Header from "../Header/Header";
 import NavBar from "../NavBar/NavBar";
@@ -11,8 +11,8 @@ const SearchResult = () => {
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const location = useLocation();
-  const query = new URLSearchParams(location.search).get("q");
+  const [searchParams] = useSearchParams();
+  const query = searchParams.get("q");
 
   useEffect(() => {
     if (!query) return;

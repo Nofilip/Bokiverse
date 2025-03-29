@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faBasketShopping } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 
 const Header = () => {
@@ -20,9 +21,9 @@ const Header = () => {
       <header className="grid gap-2 grid-cols-1 sm:flex items-center sm:items-center sm:justify-between p-4 bg-gray-800 text-white">
 
       <div className="col-span-2 sm:col-span-3 flex sm:justify-start w-auto">
-        <a href="http://localhost:3000/" className="w-full">
-        <img src="https://placehold.co/200x100" alt="Bokiverse Logo" className='w-full sm:max-w-xs' />
-        </a>
+        <Link to="/" className="w-full">
+          <img src="https://placehold.co/200x100" alt="Bokiverse Logo" className="w-full sm:max-w-xs" />
+        </Link>
       </div>
 
         <div className="flex items-center justify-between sm:justify-start w-full sm:w-2/4">
@@ -32,7 +33,7 @@ const Header = () => {
               type="search"
               placeholder="Sök här"
               value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)} // Uppdatera sökterm
+              onChange={(e) => setSearchTerm(e.target.value)}
             />
           </form>
         </div>

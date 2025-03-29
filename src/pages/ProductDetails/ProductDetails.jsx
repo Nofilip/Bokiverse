@@ -32,24 +32,24 @@ function ProductDetails() {
       .catch((error) => setError(error.message));
   }, [slug]);
 
-  // Andra useEffect: Hämtar alla produkter och filtrerar på samma författare
+ 
   useEffect(() => {
-    // För att vänta tills produkt är hämtad och 'author' är tillgänglig
+    
     if (product) {
       fetch('http://localhost:8000/api/products')
         .then((resp) => resp.json())
         .then((data) => {
-          // Filtrera produkter med samma författare, men utesluta den aktuella produkten
+          
           const filteredProducts = data.filter(p => p.author === product.author && p.id !== product.id);
           
           const limitedProducts = filteredProducts.slice(0, 3);
 
-          console.log("Limited Products:", limitedProducts); // Logga för att se resultaten
+          console.log("Limited Products:", limitedProducts);
           setRelatedProducts(limitedProducts);
         })
         .catch((error) => console.error('Fel vid hämtning av relaterade produkter:', error));
     }
-  }, [slug, product]); // Vänta på att både 'slug' och 'product' ska vara tillgängliga
+  }, [slug, product]); 
 
   if (error) return <p className="text-red-500">{error}</p>;
   if (!product) return <p>Laddar...</p>;

@@ -16,12 +16,12 @@ function AdminPage() {
         return response.json();
       })
       .then((data) => {
-        setProducts(data); // Spara produkterna i state
+        setProducts(data);
       })
       .catch((error) => {
         console.error("Error:", error);
       });
-  }, []); // Används för att bara hämta en gång när sidan laddas
+  }, []); 
 
     return (
       <div className="min-h-screen">
