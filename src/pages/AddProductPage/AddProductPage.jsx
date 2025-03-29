@@ -13,9 +13,9 @@ function AddProductPage () {
     image: ""
   });
 
-  const navigate = useNavigate(); // Omdirigeringsfunktion
+  const navigate = useNavigate(); 
 
-  // Uppdatera state när användaren skriver i fälten
+  
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -23,7 +23,7 @@ function AddProductPage () {
     });
   };
 
-  // Funktion för att skicka datan till servern
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -66,7 +66,7 @@ function AddProductPage () {
               <div className="mt-6">
               <label className="block font-semibold mb-1" htmlFor="title">Titel</label>
                 <input 
-                className="border w-1/4 p-2" 
+                className="border-2 border-gray-500 rounded w-1/4 p-2" 
                 type="text"
                 name="title"
                 value={formData.title}
@@ -76,7 +76,7 @@ function AddProductPage () {
               <div className="mt-6">
                 <label className="block font-semibold mb-1" htmlFor="description">Beskrivning</label>
                 <textarea 
-                className="w-1/2 border p-2" 
+                className="w-1/2 border-2 border-gray-500 rounded p-2" 
                 type="text"
                 name="description"
                 value={formData.description}
@@ -87,7 +87,7 @@ function AddProductPage () {
               <div className="mt-6">
                 <label className="block font-semibold mb-1" htmlFor="image">Bild-URL</label>
                 <input
-                className="border w-1/2 p-2"  
+                className="border-2 border-gray-500 rounded w-1/2 p-2"  
                 type="text"
                 name="image"
                 value={formData.image}
@@ -97,7 +97,7 @@ function AddProductPage () {
               <div className="mt-6">
                 <label className="block font-semibold mb-1" htmlFor="author">Författare</label>
                 <input
-                className="border w-1/2 p-2"  
+                className="border-2 border-gray-500 rounded w-1/2 p-2"  
                 type="text"
                 name="author"
                 value={formData.author}
@@ -107,7 +107,7 @@ function AddProductPage () {
               <div className="mt-6">
                 <label className="block font-semibold mb-1" htmlFor="isbn">ISBN</label>
                 <input
-                className="border p-2"
+                className="border-2 border-gray-500 rounded p-2"
                 type="text"
                 name="isbn"
                 value={formData.isbn}
@@ -117,7 +117,7 @@ function AddProductPage () {
               <div className="mt-6">
                 <label className="block font-semibold mb-1" htmlFor="price">Pris</label>
                 <input
-                className="border p-2"
+                className="border-2 border-gray-500 rounded p-2"
                 type="number"
                 name="price"
                 value={formData.price}

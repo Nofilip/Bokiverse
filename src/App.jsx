@@ -15,7 +15,7 @@ function App() {
       <Route index element={ <Home/> } />
       <Route path="/search" element={<SearchResults />} />
       <Route path="/product/:slug" element={<ProductDetails />} />
-      <Route path="/" component={ProductGrid} />
+      <Route path="/" element={<ProductGrid />} />
       <Route path="/admin/products" element={<AdminPage />} />
       <Route path="/admin/products/new" element={<AddProductPage />} />
       
