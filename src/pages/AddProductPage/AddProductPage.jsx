@@ -52,11 +52,11 @@ function AddProductPage () {
 
   return(
     <div className="min-h-screen">
-      <h1 className="bg-zinc-950 text-white p-6 text-3xl">Administration</h1>
+      <h1 className="text-xl font-bold bg-zinc-950 text-white p-6">Administration</h1>
       <div>
           <div className="grid grid-cols-5 gap-4 min-h-screen">
 
-            <h2 className="bg-gray-400 p-4 font-bold text-xl">Produkter</h2>
+            <h2 className="bg-gray-200 p-4 font-bold text-xl">Produkter</h2>
           
           <div className="col-span-4 p-6">
             <div className="flex justify-between pb-4">

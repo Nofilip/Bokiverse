@@ -33,7 +33,7 @@ function AdminPage() {
       <div className="grid grid-cols-5 gap-4 min-h-screen">
         
         <div className="bg-gray-200 p-4 col-span-1">
-          <h2 className="text-lg font-semibold">Produkter</h2>
+          <h2 className="font-bold text-xl">Produkter</h2>
         </div>
         
         <div className="col-span-4 p-6 h-full">
